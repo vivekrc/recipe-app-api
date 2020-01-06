@@ -36,7 +36,7 @@ class ModelTests(TestCase):
         """Test creating a new super user"""
         email = "vivek@tessel.tech"
         password = "Qwerty@123"
-        user = get_user_model().objects.create_super_user(
+        user = get_user_model().objects.create_superuser(
             email=email,
             password=password
         )
