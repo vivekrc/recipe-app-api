@@ -1,5 +1,12 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from .. import models
+# from app.core import models
+
+
+def sample_user_create(email="test@tesla.com", password="teslaaa!"):
+    user = get_user_model().objects.create_user(email=email, password=password)
+    return user
 
 
 class ModelTests(TestCase):
@@ -42,3 +49,12 @@ class ModelTests(TestCase):
         )
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+
+    def test_tag_str(self):
+        """Ensure the creation of tag happens through the model methods"""
+        sample_user = sample_user_create()
+        tag = models.Tag.objects.create(
+            user=sample_user,
+            name="Vegan",
+        )
+        self.assertEqual(str(tag), tag.name)

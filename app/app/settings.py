@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'core',
     'user',
+    'recipe',
 ]
 
 MIDDLEWARE = [
